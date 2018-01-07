@@ -1,0 +1,92 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
+    }
+}
+
+plugins {
+    id 'com.github.ben-manes.versions' version '0.17.0'
+    id 'com.github.dcendents.android-maven' version '2.0'
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+
+ext {
+    pdCorePath = System.getenv("PDCORE_PATH") ?: ""
+    bintrayKey = System.getenv("BINTRAY_KEY") ?: ""
+}
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 27
+        ndk {
+            abiFilters 'x86', 'armeabi-v7a', 'armeabi' // Same as PdCore
+        }
+        externalNativeBuild {
+            cmake {
+                arguments "-DPDCORE_PATH:STRING=${pdCorePath}"
+                cppFlags ""
+            }
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+}
+
+def siteUrl = 'https://github.com/simonnorberg/dmach-externals'
+def gitUrl = 'https://github.com/simonnorberg/dmach-externals.git'
+
+version = '1.0.0'
+group = 'net.simno.dmach'
+archivesBaseName = 'dmach-externals'
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name 'dmach-externals'
+                url siteUrl
+                licenses {
+                    license {
+                        name 'BSD New'
+                        url 'https://raw.githubusercontent.com/simonnorberg/dmach-externals/master/src/main/cpp/cyclone/LICENSE.txt'
+                    }
+                    license {
+                        name 'GPL-2.0'
+                        url 'https://raw.githubusercontent.com/simonnorberg/dmach-externals/master/src/main/cpp/zexy/LICENSE.txt'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+bintray {
+    user = 'simonnorberg'
+    key = bintrayKey
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = 'dmach-externals'
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        publish = false
+    }
+}
