@@ -42,12 +42,15 @@ android {
             path "CMakeLists.txt"
         }
     }
+    libraryVariants.all {
+        it.generateBuildConfig.enabled = false
+    }
 }
 
 def siteUrl = 'https://github.com/simonnorberg/dmach-externals'
 def gitUrl = 'https://github.com/simonnorberg/dmach-externals.git'
 
-version = '1.0.0'
+version = '1.0.1'
 group = 'net.simno.dmach'
 archivesBaseName = 'dmach-externals'
 
