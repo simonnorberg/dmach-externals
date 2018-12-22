@@ -2,7 +2,7 @@ version: 2
 references:
   container_config: &container_config
     docker:
-      - image: simonnorberg/circleci-android:api-27-ndk
+      - image: simonnorberg/circleci-android:api-28-ndk
 
     working_directory: ~/dmach-externals
 
@@ -23,7 +23,7 @@ jobs:
           name: Build PdCore
           command: |
               cd $HOME
-              git clone -b dmach-build-5 https://github.com/simonnorberg/pd-for-android.git pd-for-android
+              git clone -b dmach-build-6 https://github.com/simonnorberg/pd-for-android.git pd-for-android
               cd pd-for-android
               git submodule update --init --recursive
               ./gradlew PdCore:assembleRelease
