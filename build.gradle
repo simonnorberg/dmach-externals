@@ -4,14 +4,14 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.5.0-rc01'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
     }
 }
 
 plugins {
-    id 'com.github.ben-manes.versions' version '0.20.0'
     id 'com.github.dcendents.android-maven' version '2.1'
+    id 'com.jfrog.bintray' version '1.8.4'
 }
 
 allprojects {
@@ -22,42 +22,42 @@ allprojects {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'com.jfrog.bintray'
-
-ext {
-    pdCorePath = System.getenv("PDCORE_PATH") ?: ""
-    bintrayKey = System.getenv("BINTRAY_KEY") ?: ""
-}
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         minSdkVersion 17
-        targetSdkVersion 28
-        ndk {
-            abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a' // Same as PdCore
-        }
+        targetSdkVersion 29
         externalNativeBuild {
             cmake {
-                arguments "-DPDCORE_PATH:STRING=${pdCorePath}"
-                cppFlags ""
+                cppFlags "-std=c++14"
+                arguments '-DANDROID_STL=c++_static'
+                abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
             }
         }
     }
     externalNativeBuild {
         cmake {
-            path "CMakeLists.txt"
+            path "src/main/cpp/CMakeLists.txt"
         }
     }
+    packagingOptions {
+        exclude 'lib/armeabi-v7a/libpd.so'
+        exclude 'lib/arm64-v8a/libpd.so'
+        exclude 'lib/x86/libpd.so'
+        exclude 'lib/x86_64/libpd.so'
+    }
     libraryVariants.all {
-        it.generateBuildConfig.enabled = false
+        it.generateBuildConfigProvider.configure { task ->
+            task.enabled = false
+        }
     }
 }
 
 def siteUrl = 'https://github.com/simonnorberg/dmach-externals'
 def gitUrl = 'https://github.com/simonnorberg/dmach-externals.git'
 
-version = '1.1.0'
+version = '1.2.0'
 group = 'net.simno.dmach'
 archivesBaseName = 'dmach-externals'
 
@@ -71,11 +71,11 @@ install {
                 licenses {
                     license {
                         name 'BSD New'
-                        url 'https://raw.githubusercontent.com/simonnorberg/dmach-externals/master/src/main/cpp/cyclone/LICENSE.txt'
+                        url 'https://raw.githubusercontent.com/electrickery/pd-miXedSon/master/LICENSE.txt'
                     }
                     license {
                         name 'GPL-2.0'
-                        url 'https://raw.githubusercontent.com/simonnorberg/dmach-externals/master/src/main/cpp/zexy/LICENSE.txt'
+                        url 'https://git.iem.at/pd/zexy/raw/master/LICENSE.txt'
                     }
                 }
                 scm {
@@ -110,7 +110,7 @@ artifacts {
 
 bintray {
     user = 'simonnorberg'
-    setKey(bintrayKey)
+    setKey(System.getenv("BINTRAY_KEY"))
     setConfigurations('archives')
     pkg {
         repo = 'maven'
