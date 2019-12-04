@@ -5,7 +5,10 @@ Pure Data externals for [DMach](https://github.com/simonnorberg/dmach).
 ## Download
 
 ```groovy
+repositories {
+    jcenter()
+}
 dependencies {
-    implementation 'net.simno.dmach:dmach-externals:1.2.4'
+    implementation 'net.simno.dmach:dmach-externals:1.2.5'
 }
 ```
