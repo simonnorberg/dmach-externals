@@ -1,9 +1,10 @@
 [submodule "src/main/cpp/libpd"]
 	path = src/main/cpp/libpd
 	url = https://github.com/simonnorberg/libpd.git
+	branch = develop
 [submodule "src/main/cpp/cyclone"]
 	path = src/main/cpp/cyclone
-	url = https://github.com/electrickery/pd-miXedSon.git
+	url = https://github.com/simonnorberg/pd-miXedSon.git
 [submodule "src/main/cpp/zexy"]
 	path = src/main/cpp/zexy
 	url = https://git.iem.at/pd/zexy.git

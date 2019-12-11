@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.4.1)
 
 ### INCLUDE LIBPD LIBRARY ###
 
-option(PD_UTILS  "Compile utilities" ON)
-option(PD_EXTRA  "Compile extras" ON)
+option(PD_UTILS  "Compile utilities" OFF)
+option(PD_EXTRA  "Compile extras" OFF)
 option(PD_MULTI  "Compile with multiple instance support" OFF)
 option(PD_LOCALE "Set the LC_NUMERIC number format to the default C locale" ON)
 
@@ -77,6 +77,7 @@ set(PD_SOURCES
     libpd/pure-data/src/s_inter.c
     libpd/pure-data/src/s_loader.c
     libpd/pure-data/src/s_main.c
+    libpd/pure-data/src/s_net.c
     libpd/pure-data/src/s_path.c
     libpd/pure-data/src/s_print.c
     libpd/pure-data/src/s_stuff.h
