@@ -9,6 +9,6 @@ repositories {
     jcenter()
 }
 dependencies {
-    implementation 'net.simno.dmach:dmach-externals:1.3.0'
+    implementation 'net.simno.dmach:dmach-externals:1.4.0'
 }
 ```
