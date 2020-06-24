@@ -4,14 +4,12 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.0-beta01'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+        classpath 'com.android.tools.build:gradle:4.1.0-beta01'
     }
 }
 
 plugins {
-    id 'com.github.dcendents.android-maven' version '2.1'
-    id 'com.jfrog.bintray' version '1.8.4'
+    id 'com.jfrog.bintray' version '1.8.5'
 }
 
 allprojects {
@@ -22,11 +20,11 @@ allprojects {
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion '29.0.3'
-    ndkVersion '21.0.6113669'
+    ndkVersion '21.3.6528147'
     defaultConfig {
         minSdkVersion 17
         targetSdkVersion 29
@@ -49,41 +47,45 @@ android {
         exclude 'lib/x86/libpd.so'
         exclude 'lib/x86_64/libpd.so'
     }
-    libraryVariants.all {
-        it.generateBuildConfigProvider.configure { task ->
-            task.enabled = false
-        }
+    buildFeatures {
+        buildConfig false
     }
 }
 
 def siteUrl = 'https://github.com/simonnorberg/dmach-externals'
 def gitUrl = 'https://github.com/simonnorberg/dmach-externals.git'
 
-version = '1.4.0'
 group = 'net.simno.dmach'
-archivesBaseName = 'dmach-externals'
+version = '1.5.0'
 
-install {
-    repositories.mavenInstaller {
-        pom {
-            project {
-                packaging 'aar'
-                name 'dmach-externals'
-                url siteUrl
-                licenses {
-                    license {
-                        name 'BSD New'
-                        url 'https://raw.githubusercontent.com/simonnorberg/pd-miXedSon/master/LICENSE.txt'
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'net.simno.dmach'
+                artifactId = 'dmach-externals'
+                version = '1.5.0'
+
+                pom {
+                    name = 'dmach-externals'
+                    url = siteUrl
+                    licenses {
+                        license {
+                            name = 'BSD New'
+                            url = 'https://raw.githubusercontent.com/simonnorberg/pd-miXedSon/master/LICENSE.txt'
+                        }
+                        license {
+                            name = 'GPL-2.0'
+                            url = 'https://git.iem.at/pd/zexy/raw/master/LICENSE.txt'
+                        }
                     }
-                    license {
-                        name 'GPL-2.0'
-                        url 'https://git.iem.at/pd/zexy/raw/master/LICENSE.txt'
+                    scm {
+                        connection = gitUrl
+                        developerConnection = gitUrl
+                        url = siteUrl
                     }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
                 }
             }
         }
@@ -110,10 +112,16 @@ artifacts {
     archives sourcesJar
 }
 
+Object propOrDef(String propertyName, Object defaultValue) {
+    def propertyValue = project.properties[propertyName]
+    return propertyValue != null ? propertyValue : defaultValue
+}
+
 bintray {
     user = 'simonnorberg'
-    setKey(System.getenv("BINTRAY_KEY"))
+    setKey(propOrDef("BINTRAY_KEY", ""))
     setConfigurations('archives')
+    publications = ['release']
     pkg {
         repo = 'maven'
         name = 'dmach-externals'
