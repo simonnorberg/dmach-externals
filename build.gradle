@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0-rc02'
+        classpath 'com.android.tools.build:gradle:4.1.1'
     }
 }
 
@@ -24,7 +24,7 @@ apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 30
-    ndkVersion '21.3.6528147'
+    ndkVersion '22.0.7026061'
     defaultConfig {
         minSdkVersion 17
         targetSdkVersion 30
@@ -56,7 +56,7 @@ def siteUrl = 'https://github.com/simonnorberg/dmach-externals'
 def gitUrl = 'https://github.com/simonnorberg/dmach-externals.git'
 
 group = 'net.simno.dmach'
-version = '1.6.0'
+version = '1.7.0'
 
 afterEvaluate {
     publishing {
@@ -66,7 +66,7 @@ afterEvaluate {
 
                 groupId = 'net.simno.dmach'
                 artifactId = 'dmach-externals'
-                version = '1.6.0'
+                version = '1.7.0'
 
                 pom {
                     name = 'dmach-externals'
