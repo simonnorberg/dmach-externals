@@ -1,21 +1,17 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath 'com.android.tools.build:gradle:4.2.1'
     }
-}
-
-plugins {
-    id 'com.jfrog.bintray' version '1.8.5'
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
@@ -23,8 +19,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
 android {
+    buildToolsVersion '30.0.3'
     compileSdkVersion 30
-    ndkVersion '22.0.7026061'
     defaultConfig {
         minSdkVersion 17
         targetSdkVersion 30
@@ -56,7 +52,7 @@ def siteUrl = 'https://github.com/simonnorberg/dmach-externals'
 def gitUrl = 'https://github.com/simonnorberg/dmach-externals.git'
 
 group = 'net.simno.dmach'
-version = '1.8.0'
+version = '1.9.0'
 
 afterEvaluate {
     publishing {
@@ -66,7 +62,7 @@ afterEvaluate {
 
                 groupId = 'net.simno.dmach'
                 artifactId = 'dmach-externals'
-                version = '1.8.0'
+                version = '1.9.0'
 
                 pom {
                     name = 'dmach-externals'
@@ -110,23 +106,4 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
     archives javadocJar
     archives sourcesJar
-}
-
-Object propOrDef(String propertyName, Object defaultValue) {
-    def propertyValue = project.properties[propertyName]
-    return propertyValue != null ? propertyValue : defaultValue
-}
-
-bintray {
-    user = 'simonnorberg'
-    setKey(propOrDef("BINTRAY_KEY", ""))
-    setConfigurations('archives')
-    publications = ['release']
-    pkg {
-        repo = 'maven'
-        name = 'dmach-externals'
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        publish = false
-    }
 }

@@ -8,7 +8,6 @@ jobs:
     timeout-minutes: 45
     env:
       TERM: dumb
-      ORG_GRADLE_PROJECT_BINTRAY_KEY: ${{ secrets.ORG_GRADLE_PROJECT_BINTRAY_KEY }}
 
     steps:
       - uses: actions/checkout@v2
@@ -23,7 +22,3 @@ jobs:
 
       - name: Build and publish
         run: ./gradlew publishToMavenLocal
-
-      - name: Upload to Bintray
-        if: startsWith(github.ref, 'refs/heads/main')
-        run: ./gradlew bintrayUpload

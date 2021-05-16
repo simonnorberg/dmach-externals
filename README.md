@@ -1,4 +1,4 @@
-# dmach-externals [![Android CI](https://github.com/simonnorberg/dmach-externals/workflows/Android%20CI/badge.svg)](https://github.com/simonnorberg/dmach-externals/actions) [![Download](https://api.bintray.com/packages/simonnorberg/maven/dmach-externals/images/download.svg)](https://bintray.com/simonnorberg/maven/dmach-externals/_latestVersion)
+# dmach-externals [![Android CI](https://github.com/simonnorberg/dmach-externals/workflows/Android%20CI/badge.svg)](https://github.com/simonnorberg/dmach-externals/actions) [![JitPack](https://jitpack.io/v/simonnorberg/dmach-externals.svg)](https://jitpack.io/#simonnorberg/dmach-externals)
 
 Pure Data externals for [DMach](https://github.com/simonnorberg/dmach).
 
@@ -6,9 +6,9 @@ Pure Data externals for [DMach](https://github.com/simonnorberg/dmach).
 
 ```groovy
 repositories {
-    jcenter()
+    maven { url 'https://jitpack.io' }
 }
 dependencies {
-    implementation 'net.simno.dmach:dmach-externals:1.8.0'
+    implementation 'com.github.simonnorberg:dmach-externals:1.9.0'
 }
 ```
