@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.1'
+        classpath 'com.android.tools.build:gradle:7.2.1'
     }
 }
 
@@ -19,11 +19,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
 android {
-    buildToolsVersion '30.0.3'
-    compileSdkVersion 30
+    compileSdkVersion 32
+    ndkVersion '24.0.8215888'
     defaultConfig {
-        minSdkVersion 17
-        targetSdkVersion 30
+        minSdkVersion 28
+        targetSdkVersion 32
         externalNativeBuild {
             cmake {
                 cppFlags "-std=c++14"
@@ -52,7 +52,7 @@ def siteUrl = 'https://github.com/simonnorberg/dmach-externals'
 def gitUrl = 'https://github.com/simonnorberg/dmach-externals.git'
 
 group = 'net.simno.dmach'
-version = '1.9.0'
+version = '1.10.0'
 
 afterEvaluate {
     publishing {
@@ -62,7 +62,7 @@ afterEvaluate {
 
                 groupId = 'net.simno.dmach'
                 artifactId = 'dmach-externals'
-                version = '1.9.0'
+                version = '1.10.0'
 
                 pom {
                     name = 'dmach-externals'
