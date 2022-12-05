@@ -6,9 +6,9 @@ Pure Data externals for [DMach](https://github.com/simonnorberg/dmach).
 
 ```groovy
 repositories {
-    maven { url 'https://jitpack.io' }
+    maven { url "https://jitpack.io" }
 }
 dependencies {
-    implementation 'com.github.simonnorberg:dmach-externals:1.11.0'
+    implementation "com.github.simonnorberg:dmach-externals:1.12.0"
 }
 ```
