@@ -35,6 +35,7 @@ android {
     }
     externalNativeBuild {
         cmake {
+            version "3.22.1"
             path "src/main/cpp/CMakeLists.txt"
         }
     }
@@ -53,7 +54,7 @@ def siteUrl = "https://github.com/simonnorberg/dmach-externals"
 def gitUrl = "https://github.com/simonnorberg/dmach-externals.git"
 
 group = "net.simno.dmach"
-version = "1.13.0"
+version = "1.14.0"
 
 afterEvaluate {
     publishing {
@@ -63,7 +64,7 @@ afterEvaluate {
 
                 groupId = "net.simno.dmach"
                 artifactId = "dmach-externals"
-                version = "1.13.0"
+                version = "1.14.0"
 
                 pom {
                     name = "dmach-externals"
