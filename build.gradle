@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.4.0-rc03"
+        classpath "com.android.tools.build:gradle:7.4.0"
     }
 }
 
@@ -54,7 +54,7 @@ def siteUrl = "https://github.com/simonnorberg/dmach-externals"
 def gitUrl = "https://github.com/simonnorberg/dmach-externals.git"
 
 group = "net.simno.dmach"
-version = "1.17.0"
+version = "2.0.0"
 
 afterEvaluate {
     publishing {
@@ -64,7 +64,7 @@ afterEvaluate {
 
                 groupId = "net.simno.dmach"
                 artifactId = "dmach-externals"
-                version = "1.17.0"
+                version = "2.0.0"
 
                 pom {
                     name = "dmach-externals"
