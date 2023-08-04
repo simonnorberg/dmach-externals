@@ -9,6 +9,6 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 dependencies {
-    implementation "com.github.simonnorberg:dmach-externals:2.0.3"
+    implementation "com.github.simonnorberg:dmach-externals:2.0.4"
 }
 ```

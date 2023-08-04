@@ -28,9 +28,13 @@ android {
     }
     packaging {
         jniLibs.excludes += listOf(
+            "lib/armeabi-v7a/libc++_shared.so",
             "lib/armeabi-v7a/libpd.so",
+            "lib/arm64-v8a/libc++_shared.so",
             "lib/arm64-v8a/libpd.so",
+            "lib/x86/libc++_shared.so",
             "lib/x86/libpd.so",
+            "lib/x86_64/libc++_shared.so",
             "lib/x86_64/libpd.so"
         )
     }
@@ -51,7 +55,7 @@ val siteUrl = "https://github.com/simonnorberg/dmach-externals"
 val gitUrl = "https://github.com/simonnorberg/dmach-externals.git"
 
 group = "net.simno.dmach"
-version = "2.0.3"
+version = "2.0.4"
 
 afterEvaluate {
     publishing {
@@ -61,7 +65,7 @@ afterEvaluate {
 
                 groupId = "net.simno.dmach"
                 artifactId = "dmach-externals"
-                version = "2.0.3"
+                version = "2.0.4"
 
                 pom {
                     name.set("dmach-externals")
