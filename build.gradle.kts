@@ -51,7 +51,7 @@ val siteUrl = "https://github.com/simonnorberg/dmach-externals"
 val gitUrl = "https://github.com/simonnorberg/dmach-externals.git"
 
 group = "net.simno.dmach"
-version = "2.0.2"
+version = "2.0.3"
 
 afterEvaluate {
     publishing {
@@ -61,7 +61,7 @@ afterEvaluate {
 
                 groupId = "net.simno.dmach"
                 artifactId = "dmach-externals"
-                version = "2.0.2"
+                version = "2.0.3"
 
                 pom {
                     name.set("dmach-externals")
