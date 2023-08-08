@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "net.simno.kortholt"
+    namespace = "net.simno.dmach.externals"
     compileSdk = libs.versions.compileSdk.get().toInt()
     ndkVersion = libs.versions.ndk.get()
     defaultConfig {
@@ -55,7 +55,7 @@ val siteUrl = "https://github.com/simonnorberg/dmach-externals"
 val gitUrl = "https://github.com/simonnorberg/dmach-externals.git"
 
 group = "net.simno.dmach"
-version = "3.0.0"
+version = "3.0.1"
 
 afterEvaluate {
     publishing {
@@ -65,7 +65,7 @@ afterEvaluate {
 
                 groupId = "net.simno.dmach"
                 artifactId = "dmach-externals"
-                version = "3.0.0"
+                version = "3.0.1"
 
                 pom {
                     name.set("dmach-externals")

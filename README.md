@@ -4,11 +4,13 @@ Pure Data externals for [DMach](https://github.com/simonnorberg/dmach).
 
 ## Download
 
-```groovy
+```kotlin
 repositories {
-    maven { url "https://jitpack.io" }
+    maven {
+        url = uri("https://jitpack.io")
+    }
 }
 dependencies {
-    implementation "com.github.simonnorberg:dmach-externals:3.0.0"
+    implementation("com.github.simonnorberg:dmach-externals:3.0.1")
 }
 ```
