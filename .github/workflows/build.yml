@@ -1,19 +1,21 @@
 name: Android CI
 
-on: [push]
+on: [ push ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.repository == 'simonnorberg/dmach-externals'
     timeout-minutes: 30
     env:
       TERM: dumb
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
 
       - name: Set up JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4.2.1
         with:
           distribution: 'zulu'
           java-version: 17

@@ -23,8 +23,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     packaging {
         jniLibs.excludes += listOf(
@@ -55,7 +55,7 @@ val siteUrl = "https://github.com/simonnorberg/dmach-externals"
 val gitUrl = "https://github.com/simonnorberg/dmach-externals.git"
 
 group = "net.simno.dmach"
-version = "3.0.1"
+version = "3.1.0"
 
 afterEvaluate {
     publishing {
@@ -65,7 +65,7 @@ afterEvaluate {
 
                 groupId = "net.simno.dmach"
                 artifactId = "dmach-externals"
-                version = "3.0.1"
+                version = "3.1.0"
 
                 pom {
                     name.set("dmach-externals")
