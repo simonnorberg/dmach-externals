@@ -1,5 +1,5 @@
 jdk:
-  - openjdk17
+  - openjdk21
 before_install:
   - wget "https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip" -O commandlinetools.zip
   - unzip commandlinetools.zip -d $ANDROID_HOME/

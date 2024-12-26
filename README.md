@@ -11,6 +11,6 @@ repositories {
     }
 }
 dependencies {
-    implementation("com.github.simonnorberg:dmach-externals:3.2.0")
+    implementation("com.github.simonnorberg:dmach-externals:3.3.0")
 }
 ```
