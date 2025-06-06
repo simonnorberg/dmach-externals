@@ -1,8 +1,8 @@
 [versions]
-agp = "8.7.3"
-compileSdk = "35"
+agp = "8.10.1"
+compileSdk = "36"
 minSdk = "28"
-ndk = "27.2.12479018"
+ndk = "28.1.13356709"
 
 [plugins]
 android-library = { id = "com.android.library", version.ref = "agp" }

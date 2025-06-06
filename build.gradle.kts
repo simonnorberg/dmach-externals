@@ -12,7 +12,10 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags("-std=c++14")
-                arguments("-DANDROID_STL=c++_shared")
+                arguments(
+                    "-DANDROID_STL=c++_shared",
+                    "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON"
+                )
                 abiFilters("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
             }
         }
@@ -55,7 +58,7 @@ val siteUrl = "https://github.com/simonnorberg/dmach-externals"
 val gitUrl = "https://github.com/simonnorberg/dmach-externals.git"
 
 group = "net.simno.dmach"
-version = "3.3.0"
+version = "3.4.0"
 
 afterEvaluate {
     publishing {
@@ -65,7 +68,7 @@ afterEvaluate {
 
                 groupId = "net.simno.dmach"
                 artifactId = "dmach-externals"
-                version = "3.3.0"
+                version = "3.4.0"
 
                 pom {
                     name.set("dmach-externals")

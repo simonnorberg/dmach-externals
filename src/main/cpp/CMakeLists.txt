@@ -159,6 +159,7 @@ endif()
 
 add_library(libpd_static STATIC ${SOURCE_FILES})
 add_library(libpd        SHARED ${SOURCE_FILES})
+target_link_options(libpd PRIVATE "-Wl,-z,max-page-size=16384")
 
 # set the output library name for libpd depending on the settings
 set(LIBPD_OUTPUT_NAME     pd)
@@ -208,11 +209,14 @@ add_library(
     cyclone/shared/common/loud.c
     cyclone/shared/sickle/sic.c
 )
+target_link_options(tanh_tilde PRIVATE "-Wl,-z,max-page-size=16384")
 target_include_directories(tanh_tilde PRIVATE cyclone/shared)
 target_link_libraries(tanh_tilde libpd)
 
 add_library(limiter_tilde SHARED zexy/src/limiter~.c)
+target_link_options(limiter_tilde PRIVATE "-Wl,-z,max-page-size=16384")
 target_link_libraries(limiter_tilde libpd)
 
 add_library(z_tilde SHARED zexy/src/z~.c)
+target_link_options(z_tilde PRIVATE "-Wl,-z,max-page-size=16384")
 target_link_libraries(z_tilde libpd)
